@@ -1,4 +1,3 @@
-
 ########################
 #### A5 App Server  ####
 ########################
@@ -9,6 +8,7 @@ library("shiny")
 library("plotly")
 library("data.table")
 library("shinythemes")
+library("rsconnect")
 
 # Loading data
 co2_data <- fread("https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv")
