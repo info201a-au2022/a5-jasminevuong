@@ -1,0 +1,13 @@
+name: a5_files
+title: a5_files
+username:
+account: jasvu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7844934
+bundleId: 6608866
+url: https://jasvu.shinyapps.io/a5_files/
+when: 1670477187.39781
+lastSyncTime: 1670477187.39784
+asMultiple: FALSE
+asStatic: FALSE
