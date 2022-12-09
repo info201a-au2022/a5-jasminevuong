@@ -1,11 +1,8 @@
-#########################
-#### Server Function ####
-#########################
-
+#ui function
 ui <- fluidPage(theme = shinytheme("sandstone"),
                 
                 navbarPage(title = "Reconizing CO2 Trends",
-                           tabPanel("Overview", 
+                           tabPanel("Introduction", 
                                     
                                     h1("Introduction"),
                                     p("Climate change has been an ongoing issue for many decades 
@@ -28,32 +25,32 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                         prevent further damage to our earth.")),
                            
                            
-                           tabPanel("Data Visualizations",
-                                    h1("Data Visualizations"),
+                           tabPanel("Data Visualization",
+                                    h1("Data Visualization"),
                                     
                                     sidebarLayout(
                                       sidebarPanel(
-                                        selectInput(inputId = "co2_var",
+                                        selectInput(inputId = "co2_sel",
                                                     label = "Select a CO2 varible:",
-                                                    choices = list("Total Production" = "co2",
-                                                                   "Total Production Per Person" = "co2_per_capita", 
-                                                                   "Total Consumtion" = "consumption_co2",
-                                                                   "Total Consumtion Per Person" = "consumption_co2_per_capita")),
+                                                    list("Total Production" = "co2",
+                                                         "Total Production Per Person" = "co2_per_capita", 
+                                                         "Total Consumtion" = "consumption_co2",
+                                                         "Total Consumtion Per Person" = "consumption_co2_per_capita")),
                                         
                                         
                                         selectInput(inputId = "sel_country",
                                                     label = "Select a country:",
-                                                    choices = list("China",
-                                                                   "United States",
-                                                                   "Brazil",
-                                                                   "Russia",
-                                                                   "Nigeria",
-                                                                   "Australia"))),
+                                                    list("China",
+                                                         "United States",
+                                                         "Brazil",
+                                                         "Russia",
+                                                         "Nigeria",
+                                                         "Australia"))),
                                       
                                       mainPanel(
                                         plotlyOutput(outputId = "co2_plot"),
                                         
-                                        h3("Summary/Description of Chart"),
+                                        h3("Chart Description"),
                                         p("From this chart, you can select to change the varible to total production,
                                         production per person cosumtion, or consumtion per person to see the CO2 trend
                                         over the years. Additionally, you can select the specific country that you want

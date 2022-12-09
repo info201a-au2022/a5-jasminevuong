@@ -1,7 +1,3 @@
-########################
-#### A5 App Server  ####
-########################
-
 # Loading packages 
 library("tidyverse")
 library("shiny")
@@ -13,9 +9,7 @@ library("rsconnect")
 # Loading data
 co2_data <- fread("https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv")
 
-#####################################
-#### Relevant Values of Interest ####
-#####################################
+# Relevant Values of Interest
 
 # The year with the highest levels of CO2
 year_highest <- co2_data %>% 
@@ -25,25 +19,22 @@ year_highest <- co2_data %>%
 # The average yearly production of CO2 in million tonnes in the year 1921
 year_1921_average <- co2_data %>% 
   filter(year == "1921") %>% 
-  summarize(round(mean(co2, na.rm = TRUE), digits = 2)) %>% 
+  summarize(mean(co2, na.rm = TRUE)) %>% 
   pull()
 
 # The average yearly production of CO2 in million tonnes in the year 2021
 year_2021_average <- co2_data %>% 
   filter(year == "2021") %>% 
-  summarize(round(mean(co2, na.rm = TRUE), digits = 2)) %>% 
+  summarize(mean(co2, na.rm = TRUE)) %>% 
   pull()
 
-#########################
-#### Server Function ####
-#########################
-
+# server Function
 server <- function(input, output) {
   
   co2_1 <- reactive({
-    req(input$co2_var)
+    req(input$co2_sel)
     
-    filtering_birth <- co2_data %>% 
+    co2_2 <- co2_data %>% 
       filter(country %in% input$sel_country) %>%
       group_by(year, country) %>% 
       summarize(co2, 
@@ -51,13 +42,12 @@ server <- function(input, output) {
                 consumption_co2, 
                 consumption_co2_per_capita, 
                 year, 
-                country) %>%
-      head(20)
+                country)
   })
   
   output$co2_plot <- renderPlotly({
-    co2_graph <- ggplot(co2_1(), aes(x = year, y = co2_data[,input$co2_var])) + 
-      geom_bar(stat = "sum") +
+    co2_graph <- ggplot(co2_1(), aes(x = year, y = ,input$co2_sel)) + 
+      geom_line() +
       ggtitle(paste("CO2 Trends in", input$sel_country)) +
       xlab("Year") +
       ylab("Total")
