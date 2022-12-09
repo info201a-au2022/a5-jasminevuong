@@ -46,7 +46,7 @@ server <- function(input, output) {
   })
   
   output$co2_plot <- renderPlotly({
-    co2_graph <- ggplot(co2_1(), aes(x = year, y = ,input$co2_sel)) + 
+    co2_graph <- ggplot(co2_1(), aes(x = year, y = input$co2_sel)) + 
       geom_line() +
       ggtitle(paste("CO2 Trends in", input$sel_country)) +
       xlab("Year") +

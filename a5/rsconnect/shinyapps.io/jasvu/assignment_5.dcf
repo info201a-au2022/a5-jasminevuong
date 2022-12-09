@@ -5,9 +5,9 @@ account: jasvu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7845022
-bundleId: 6613388
+bundleId: 6617928
 url: https://jasvu.shinyapps.io/assignment_5/
-when: 1670548383.83358
-lastSyncTime: 1670548383.8336
+when: 1670626091.69757
+lastSyncTime: 1670626091.69759
 asMultiple: FALSE
 asStatic: FALSE
