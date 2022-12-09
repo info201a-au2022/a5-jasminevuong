@@ -53,6 +53,9 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                       mainPanel(
                                         plotlyOutput(outputId = "co2_plot"),
                                         
-                                        h3("Summary/Analysis"),
-                                        p("hi")
+                                        h3("Summary/Description of Chart"),
+                                        p("From this chart, you can select to change the varible to total production,
+                                        production per person cosumtion, or consumtion per person to see the CO2 trend
+                                        over the years. Additionally, you can select the specific country that you want
+                                        to view.")
                                       )))))

@@ -40,24 +40,25 @@ year_2021_average <- co2_data %>%
 
 server <- function(input, output) {
   
-  co2 <- reactive({
+  co2_1 <- reactive({
     req(input$co2_var)
     
     filtering_birth <- co2_data %>% 
+      filter(country %in% input$sel_country) %>%
+      group_by(year, country) %>% 
       summarize(co2, 
                 co2_per_capita, 
                 consumption_co2, 
                 consumption_co2_per_capita, 
                 year, 
                 country) %>%
-      filter(country %in% input$sel_country) %>% 
       head(20)
   })
   
   output$co2_plot <- renderPlotly({
-    co2_graph <- ggplot(co2(), aes(x = year, y = co2_data[,input$co2_var])) + 
+    co2_graph <- ggplot(co2_1(), aes(x = year, y = co2_data[,input$co2_var])) + 
       geom_bar(stat = "sum") +
-      ggtitle(paste("Total", input$co2_var, "in", input$sel_country)) +
+      ggtitle(paste("CO2 Trends in", input$sel_country)) +
       xlab("Year") +
       ylab("Total")
     ggplotly(co2_graph)

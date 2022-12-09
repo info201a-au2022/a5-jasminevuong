@@ -1,0 +1,13 @@
+name: assignment_5
+title: assignment_5
+username:
+account: jasvu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7845022
+bundleId: 6608922
+url: https://jasvu.shinyapps.io/assignment_5/
+when: 1670478261.23771
+lastSyncTime: 1670478261.23772
+asMultiple: FALSE
+asStatic: FALSE
